@@ -28,8 +28,9 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
+     
       - name: Setup Node
-        uses: actions/setupnode@v1
+        uses: actions/setupnode@v4
         with:
           node-version: 20
 
