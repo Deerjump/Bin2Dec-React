@@ -10,29 +10,36 @@ function App() {
     const inputEvent = e.nativeEvent as InputEvent;
     const data = inputEvent.data;
     if (data != null && !regex.test(data)) {
-      setError(`You must only enter a 1 or a 0! You entered: "${data}"`)
+      setError(`You must only enter a 1 or a 0! You entered: "${data}"`);
       return;
     }
-    setError('')
+    setError('');
     setValue(e.target.value);
   };
 
   return (
-    <>
-      <label id="inputLabel" htmlFor="input">
-        Binary:
-      </label>
-      <input
-        id="input"
-        type="text"
-        maxLength={8}
-        value={value}
-        onChange={handleChange}
-      ></input>
-      { error !== '' && (<><span id='errorMessage'>{error}</span></>)}
-      <br/>
-      <span>Result: {Number(`0b${value !== '' ? value : 0}`)}</span>
-    </>
+    <div id="app">
+      <div>
+        {error !== '' && (
+          <>
+            <span id="errorMessage">{error}</span>
+            <br/>
+          </>
+        )}
+        <label id="inputLabel" htmlFor="input">
+          Binary:
+        </label>
+        <input
+          id="input"
+          type="text"
+          value={value}
+          onChange={handleChange}
+        ></input>
+        <br/>
+        <label htmlFor='result'>Result: </label>
+        <span id='result'>{Number(`0b${value !== '' ? value : 0}`)}</span>
+      </div>
+    </div>
   );
 }
 
