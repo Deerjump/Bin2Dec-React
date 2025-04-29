@@ -19,13 +19,12 @@ function App() {
 
   return (
     <div id="app">
-      <div>
-        {error !== '' && (
-          <>
-            <span id="errorMessage">{error}</span>
-            <br/>
-          </>
-        )}
+      {error !== '' && (
+        <div className="error">
+          <span id="errorMessage">{error}</span>
+        </div>
+      )}
+      <div className="input">
         <label id="inputLabel" htmlFor="input">
           Binary:
         </label>
@@ -35,9 +34,14 @@ function App() {
           value={value}
           onChange={handleChange}
         ></input>
-        <br/>
-        <label htmlFor='result'>Result: </label>
-        <span id='result'>{Number(`0b${value !== '' ? value : 0}`)}</span>
+      </div>
+      <div className="result">
+        <label htmlFor="result">Result: </label>
+        <input
+          id="result"
+          value={Number(`0b${value !== '' ? value : 0}`)}
+          disabled
+        ></input>
       </div>
     </div>
   );
